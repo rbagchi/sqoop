@@ -201,7 +201,7 @@ public class MySQLExportMapper<KEYIN, VALIN>
     }
 
     if (0 != escapedBy) {
-      args.add("--escaped-by=0x" + Integer.toString(escapedBy, 16));
+	args.add("--fields-escaped-by=0x" + Integer.toString(escapedBy, 16));
     }
 
     // These two arguments are positional and must be last.
@@ -319,7 +319,7 @@ public class MySQLExportMapper<KEYIN, VALIN>
     this.conf = context.getConfiguration();
 
     // TODO: Support additional encodings.
-    this.mysqlCharSet = MySQLUtils.MYSQL_DEFAULT_CHARSET;
+    this.mysqlCharSet = "utf-8";
 
     this.checkpointDistInBytes = conf.getLong(
         MYSQL_CHECKPOINT_BYTES_KEY, DEFAULT_CHECKPOINT_BYTES);
